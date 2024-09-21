@@ -1,6 +1,6 @@
 import sqlite3
 
-from database.database import default_db_setup
+from database.setup import default_db_setup
 
 
 def restaurant_already_exists() -> bool:
