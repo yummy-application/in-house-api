@@ -21,3 +21,15 @@ def get_all_tables() -> list:
         cursor = db.cursor()
         cursor.execute("SELECT * FROM tables")
         return cursor.fetchall()
+
+def deleteTable(table_name):
+    with sqlite3.connect("restaurant.db") as db:
+        cursor = db.cursor()
+        cursor.execute("DELETE FROM tables WHERE name = ?", (table_name,))
+        db.commit()
+
+def update_table_status(table_name, new_status):
+    with sqlite3.connect("restaurant.db") as db:
+        cursor = db.cursor()
+        cursor.execute("UPDATE tables SET status = ? WHERE name = ?", (new_status, table_name))
+        db.commit()
